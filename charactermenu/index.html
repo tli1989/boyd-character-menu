@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Special+Elite&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="scrapbook-page">
+        <h1 class="title-sticker">Our Friends</h1>
+        
+        <div class="main-photo-container">
+            <div class="polaroid-frame large-frame">
+                <div class="photo-wrapper">
+                    <img src="newhomepage.jpg" alt="Group Photo" class="main-photo" id="main-photo">
+                    <div id="click-overlay"></div>
+                </div>
+                <div class="tape-strip top-left"></div>
+                <div class="tape-strip top-right"></div>
+                <div class="tape-strip bottom"></div>
+            </div>
+            <p class="handwritten-caption">Click on a character to hear them!</p>
+        </div>
+    </div>
+
+    <!-- Audio Modal -->
+    <div id="audio-modal" class="modal-overlay hidden">
+        <div class="modal-content polaroid-style">
+            <button class="close-btn" id="close-modal">&times;</button>
+            <div class="tape-strip modal-tape"></div>
+            
+            <h2 id="modal-char-name">Character Name</h2>
+            
+            <!-- iPod Interface -->
+            <div class="ipod-container">
+                <img src="ipod.png" alt="iPod" class="ipod-image">
+                
+                <!-- The Screen -->
+                <div class="ipod-screen">
+                    <div class="screen-header">Now Playing</div>
+                    <div class="track-info" id="track-title">Song Title</div>
+                    
+                    <div class="screen-progress-bar-container" id="progress-container">
+                        <div class="screen-progress-bar" id="progress-bar"></div>
+                    </div>
+                    
+                    <div class="screen-time">
+                        <span id="current-time">0:00</span>
+                        <span id="total-time">-0:00</span>
+                    </div>
+                </div>
+
+                <!-- Invisible Click Wheel Zones -->
+                <div class="click-wheel-controls">
+                    <!-- Center: Play/Pause -->
+                    <div class="wheel-btn wheel-center-btn" id="center-btn" title="Select"></div>
+                    
+                    <!-- Top: Menu -->
+                    <div class="wheel-btn wheel-menu-btn" id="menu-btn" title="Menu"></div>
+                    
+                    <!-- Bottom: Play/Pause -->
+                    <div class="wheel-btn wheel-play-btn" id="wheel-play-btn" title="Play/Pause"></div>
+                    
+                    <!-- Left: Prev -->
+                    <div class="wheel-btn wheel-prev-btn" id="prev-btn" title="Previous"></div>
+                    
+                    <!-- Right: Next -->
+                    <div class="wheel-btn wheel-next-btn" id="next-btn" title="Next"></div>
+                </div>
+            </div>
+
+            <!-- Locked State Overlay -->
+            <div id="email-gate" class="gate-overlay hidden">
+                <div class="gate-content">
+                    <h3>Wait a minute!</h3>
+                    <p>To hear the rest of this secret recording, please join our club list.</p>
+                    <form id="email-form">
+                        <input type="email" placeholder="your.email@example.com" required>
+                        <button type="submit">Unlock Audio</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Easter Egg Modal -->
+    <div id="easter-egg-modal" class="modal-overlay hidden">
+        <div class="modal-content polaroid-style">
+            <button class="close-btn" id="close-egg">&times;</button>
+            <div class="tape-strip modal-tape"></div>
+            
+            <h3>Secret Menu</h3>
+            <p>You found the secret spot! <br> 
+               Did you know that Boyd Crowder once dug coal with his bare hands? 
+               <br><br>
+               Keep clicking for more secrets soon...
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
