@@ -143,9 +143,14 @@ document.addEventListener('DOMContentLoaded', () => {
             currentAudio = null;
         }
         
-        // Audio path logic
+        // Audio path logic - handle uppercase .MP3 extensions
         let audioPath = char.audio || `${char.name.toLowerCase()}.mp3`;
-        if (char.name === 'Ghost1') audioPath = 'ghost1.MP3';
+        
+        // Files with uppercase .MP3 extension
+        const upperCaseMP3 = ['Ghost1', 'bucky', 'oc3'];
+        if (upperCaseMP3.includes(char.name)) {
+            audioPath = `${char.name.toLowerCase()}.MP3`;
+        }
 
         currentAudio = new Audio(audioPath);
         
