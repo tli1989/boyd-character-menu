@@ -1,6 +1,6 @@
-// Supabase config - replace with your values from supabase.com/dashboard/project/YOUR_PROJECT/settings/api
-const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
-const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+// Supabase config
+const SUPABASE_URL = 'https://mzzrlykpcupbzifkfnde.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_PtOTGTJuiOotGaEQccOdgw_MnIgWobN';
 
 document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('click-overlay');
