@@ -1,6 +1,6 @@
 // Supabase config
 const SUPABASE_URL = 'https://mzzrlykpcupbzifkfnde.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_PtOTGTJuiOotGaEQccOdgw_MnIgWobN';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im16enJseWtwY3VwYnppZmtmbmRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwODIzNjEsImV4cCI6MjA4MDY1ODM2MX0.eI36c24AUTqJDJRwewEO7P75B9QOCWucxIiWX75VNJg';
 
 document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('click-overlay');
