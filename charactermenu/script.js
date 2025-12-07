@@ -41,7 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Ghost1', 
             clipPath: 'polygon(1.30% 9.76%, 3.54% 9.57%, 4.99% 9.27%, 6.04% 8.72%, 5.38% 7.93%, 4.46% 7.39%, 4.59% 6.23%, 4.72% 4.89%, 5.78% 4.35%, 7.09% 3.37%, 9.86% 2.95%, 11.17% 2.95%, 13.01% 3.25%, 14.99% 3.80%, 15.51% 5.14%, 16.30% 5.62%, 16.30% 6.90%, 16.44% 7.20%, 16.30% 8.42%, 14.86% 8.91%, 14.99% 9.33%, 16.57% 10.12%, 18.28% 10.79%, 20.65% 11.09%, 21.96% 12.01%, 22.88% 13.65%, 23.41% 14.44%, 23.28% 15.53%, 23.54% 16.57%, 24.59% 17.05%, 24.86% 17.60%, 25.65% 19.42%, 27.36% 20.76%, 27.49% 21.61%, 27.75% 22.71%, 27.49% 23.56%, 25.91% 24.04%, 24.99% 22.89%, 24.20% 22.52%, 22.49% 21.55%, 21.04% 20.88%, 20.38% 19.73%, 20.38% 18.45%, 19.59% 17.84%, 18.94% 17.24%, 18.67% 17.84%, 18.67% 19.42%, 18.67% 20.64%, 18.67% 21.61%, 19.33% 22.59%, 19.86% 23.31%, 19.99% 23.86%, 22.49% 30.25%, 21.70% 26.54%, 22.49% 31.22%, 21.44% 31.70%, 19.86% 33.35%, 19.86% 34.32%, 19.07% 35.05%, 19.20% 35.84%, 15.25% 36.02%, 14.20% 36.02%, 14.46% 34.62%, 14.07% 33.77%, 12.75% 31.83%, 12.36% 30.55%, 10.91% 27.94%, 10.91% 26.48%, 10.65% 25.38%, 10.38% 24.41%, 10.78% 22.71%, 8.15% 22.59%, 5.25% 22.59%, 3.15% 21.79%, 2.22% 20.58%, 1.96% 19.61%, 1.44% 17.72%, 1.30% 16.81%, 1.30% 15.59%, 0.12% 13.47%, 0.12% 11.58%)', 
             audio: 'ghost1.MP3',
-            secret: 'Ghost1 once haunted a library for 47 years just because someone dog-eared a page.'
+            hasContent: true,
+            secret: `You're an intelligence analyst. You've never met in person, but you've been the voice in his ear for months, guiding him, helping him, and quietly, under your breath, praying for him.
+
+You don't realize he's become obsessed with the sound of your voice. You take a sick day and Ghost realizes you aren't there. 12 hours later… he's at your door.`
         },
         { 
             name: 'Walton', 
@@ -86,12 +89,18 @@ document.addEventListener('DOMContentLoaded', () => {
         { 
             name: 'bucky', 
             clipPath: 'polygon(39.07% 80.04%, 39.07% 81.62%, 39.07% 82.47%, 39.07% 83.20%, 39.07% 84.29%, 39.07% 85.63%, 39.07% 85.87%, 39.07% 86.66%, 39.07% 87.46%, 39.07% 88.85%, 39.07% 89.95%, 39.07% 90.43%, 39.07% 91.77%, 39.07% 92.56%, 39.07% 92.81%, 40.65% 92.81%, 43.41% 92.81%, 45.51% 92.81%, 48.15% 92.81%, 51.04% 92.99%, 54.72% 92.99%, 57.49% 92.99%, 59.07% 92.99%, 60.25% 92.81%, 60.25% 91.22%, 60.25% 90.19%, 60.12% 87.88%, 60.12% 86.30%, 60.12% 85.21%, 60.25% 84.17%, 60.25% 81.86%, 60.25% 80.46%, 60.25% 79.79%, 56.83% 79.79%, 54.86% 79.79%, 53.15% 79.79%, 50.25% 79.86%, 47.88% 79.86%, 46.70% 79.86%, 44.86% 79.86%, 43.54% 79.86%, 41.83% 79.86%, 41.30% 79.86%)',
-            secret: 'Bucky remembers everything. Even the things he wishes he could forget.'
+            hasContent: true,
+            secret: `Bucky's been disappearing at nights. People are worried. Where's he going? To find you– the last person on his amends list. Well…technically….the grand-daughter of the last person. As close as it's going to get. At first it really was about making amends, but now he just really wants to spend time with you.`
         },
         { 
             name: 'oc3', 
             clipPath: 'polygon(0.91% 88.61%, 3.01% 87.70%, 5.65% 87.27%, 7.88% 86.66%, 10.51% 86.36%, 13.15% 85.75%, 14.33% 85.08%, 15.38% 84.29%, 14.72% 83.75%, 14.72% 82.04%, 14.86% 80.83%, 14.86% 80.10%, 14.20% 78.94%, 14.33% 77.24%, 15.65% 76.03%, 15.65% 75.05%, 17.22% 73.47%, 21.04% 72.32%, 23.54% 72.56%, 26.57% 72.62%, 29.33% 72.32%, 31.57% 72.44%, 31.57% 74.75%, 32.49% 75.90%, 32.49% 77.00%, 31.96% 73.47%, 32.49% 78.88%, 32.09% 80.10%, 32.09% 80.16%, 29.99% 81.50%, 30.12% 82.35%, 30.25% 83.75%, 31.96% 84.29%, 33.67% 84.42%, 35.51% 84.54%, 36.83% 84.84%, 37.49% 85.69%, 37.49% 86.66%, 37.36% 87.33%, 37.36% 88.12%, 37.36% 88.73%, 37.36% 89.16%, 37.36% 89.77%, 37.36% 90.68%, 37.36% 91.77%, 37.36% 92.44%, 37.36% 92.81%, 37.62% 93.53%, 42.49% 93.84%, 40.12% 93.66%, 45.65% 93.78%, 47.36% 93.90%, 46.83% 94.87%, 46.83% 95.97%, 46.83% 97.73%, 46.83% 99.13%, 44.99% 99.25%, 42.09% 99.25%, 38.28% 99.25%, 35.65% 99.25%, 32.36% 99.19%, 28.67% 99.31%, 26.30% 99.37%, 23.28% 99.37%, 18.67% 99.25%, 15.78% 99.25%, 12.36% 99.49%, 8.01% 99.49%, 4.72% 99.49%, 2.75% 99.61%, 1.57% 99.61%, 1.44% 98.09%, 1.44% 97.37%, 1.44% 96.39%, 1.17% 95.30%, 1.17% 93.90%, 1.17% 93.41%, 1.17% 92.44%, 1.17% 91.41%, 1.17% 90.43%, 1.17% 90.01%)',
-            secret: 'OC3 talks to plants. The plants talk back. Nobody believes them.'
+            hasContent: true,
+            secret: `You live after The Fall. Years of terrifying chaos made you willing to try anything to get out of the woods (literally). So you enter The Compound, a locked down paramilitary region controlled by Captain Forrest, and kept safe by forces led by the Compound's chief attack dog… Drake. Think mute scarred feral alpha vibes. Drake's barely ever said two words to anyone besides the Captain…until you get there.
+
+The first job you're assigned, you mess up. But before you get thrown out of the Compound, Drake steps in.
+
+"Thank you?"`
         },
         { 
             name: 'knight', 
@@ -207,12 +216,43 @@ document.addEventListener('DOMContentLoaded', () => {
     function openMenu() {
         if (currentAudio) currentAudio.pause();
         
-        // Get current character's secret
+        // Get current character
         const currentChar = characters[currentCharacterIndex];
-        eggTitle.textContent = currentChar.name;
-        eggText.textContent = currentChar.secret;
         
+        // If character has content, show secret menu
+        // Otherwise, show email signup
+        if (currentChar.hasContent) {
+            eggTitle.textContent = currentChar.name;
+            eggText.textContent = currentChar.secret;
+            eggModal.classList.remove('hidden');
+        } else {
+            // Show coming soon signup
+            showComingSoonModal(currentChar.name);
+        }
+    }
+    
+    function showComingSoonModal(charName) {
+        eggTitle.textContent = charName;
+        eggText.innerHTML = `<span style="display:block;margin-bottom:15px;">Be the first to know when it's live</span>
+            <form id="coming-soon-form" style="display:flex;flex-direction:column;gap:8px;">
+                <input type="email" placeholder="your.email@example.com" required style="padding:10px;border:1px solid #8ba4c4;border-radius:4px;font-family:Arial,sans-serif;">
+                <button type="submit" style="padding:10px;background:#5a7a9a;color:white;border:none;border-radius:4px;font-family:Arial,sans-serif;cursor:pointer;">Notify Me</button>
+            </form>`;
         eggModal.classList.remove('hidden');
+        
+        // Add form handler
+        setTimeout(() => {
+            const form = document.getElementById('coming-soon-form');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = form.querySelector('input').value;
+                    console.log(`Coming soon signup: ${email} for ${charName}`);
+                    alert('Thanks! We\'ll let you know when it\'s ready.');
+                    eggModal.classList.add('hidden');
+                });
+            }
+        }, 100);
     }
 
     function closeMenu() {
