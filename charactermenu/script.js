@@ -1,3 +1,7 @@
+// Supabase config - replace with your values from supabase.com/dashboard/project/YOUR_PROJECT/settings/api
+const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
+const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+
 document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('click-overlay');
     
@@ -258,21 +262,7 @@ The first job you're assigned, you mess up. But before you get thrown out of the
                     e.preventDefault();
                     const email = form.querySelector('input').value;
                     
-                    // Submit to Formspree (replace YOUR_FORM_ID with actual ID)
-                    try {
-                        await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                email: email,
-                                character: charName,
-                                type: 'coming_soon',
-                                timestamp: new Date().toISOString()
-                            })
-                        });
-                    } catch (err) {
-                        console.log('Form submission error:', err);
-                    }
+                    await saveEmail(email, charName, 'coming_soon');
                     
                     alert('Thanks! We\'ll let you know when it\'s ready.');
                     eggModal.classList.add('hidden');
@@ -340,27 +330,36 @@ The first job you're assigned, you mess up. But before you get thrown out of the
         return `${m}:${s < 10 ? '0' : ''}${s}`;
     }
 
+    // Save email to Supabase
+    async function saveEmail(email, charName, type) {
+        try {
+            const response = await fetch(`${SUPABASE_URL}/rest/v1/signups`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'apikey': SUPABASE_ANON_KEY,
+                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                },
+                body: JSON.stringify({
+                    email: email,
+                    character: charName,
+                    signup_type: type
+                })
+            });
+            return response.ok;
+        } catch (err) {
+            console.log('Supabase error:', err);
+            return false;
+        }
+    }
+
     emailForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = emailForm.querySelector('input').value;
         const currentChar = characters[currentCharacterIndex];
         
         if (email) {
-            // Submit to Formspree (replace YOUR_FORM_ID with actual ID from formspree.io)
-            try {
-                await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        email: email,
-                        character: currentChar.name,
-                        type: 'audio_unlock',
-                        timestamp: new Date().toISOString()
-                    })
-                });
-            } catch (err) {
-                console.log('Form submission error:', err);
-            }
+            await saveEmail(email, currentChar.name, 'audio_unlock');
             
             isUnlocked = true;
             emailGate.classList.add('hidden');
