@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const FREE_LIMIT = 15; 
     let currentCharacterIndex = 0;
     
+    // Track which characters have been seen (persists in localStorage)
+    const seenCharacters = new Set(JSON.parse(localStorage.getItem('seenCharacters') || '[]'));
+    
     // Store character data in an array for easy navigation
     const characters = [
         { 
@@ -173,6 +176,17 @@ The first job you're assigned, you mess up. But before you get thrown out of the
             progressBar.style.width = '0%';
             currentTimeDisplay.textContent = "0:00";
         });
+        
+        // Auto-open secret menu on first view of this character
+        if (!seenCharacters.has(char.name)) {
+            seenCharacters.add(char.name);
+            localStorage.setItem('seenCharacters', JSON.stringify([...seenCharacters]));
+            
+            // Small delay so modal appears first, then secret menu
+            setTimeout(() => {
+                openMenu();
+            }, 300);
+        }
     }
 
     function closeModal() {
