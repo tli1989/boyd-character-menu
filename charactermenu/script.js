@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const trackTitle = document.getElementById('track-title');
     
     // iPod Elements
-    const ipodContainer = document.querySelector('.ipod-container');
     const centerBtn = document.getElementById('center-btn');
     const menuBtn = document.getElementById('menu-btn');
     const prevBtn = document.getElementById('prev-btn');
@@ -33,84 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let isUnlocked = false; 
     const FREE_LIMIT = 15; 
     let currentCharacterIndex = 0;
-
-    // ========================================
-    // TEMPORARY TRACER TOOL FOR IPOD BUTTONS
-    // ========================================
-    const outputArea = document.createElement('textarea');
-    outputArea.style.position = 'fixed';
-    outputArea.style.bottom = '10px';
-    outputArea.style.right = '10px';
-    outputArea.style.width = '350px';
-    outputArea.style.height = '180px';
-    outputArea.style.zIndex = '2000';
-    outputArea.style.fontSize = '12px';
-    outputArea.placeholder = "IPOD BUTTON TRACER\n1. Click a character to open iPod\n2. Click around a button zone\n3. Press Enter to name it\n4. Copy the output!";
-    document.body.appendChild(outputArea);
-
-    let currentPoints = [];
-    let tempDots = [];
-    let tracerActive = false;
-
-    function createDot(xPercent, yPercent) {
-        const dot = document.createElement('div');
-        dot.style.width = '6px';
-        dot.style.height = '6px';
-        dot.style.background = '#00ff00'; // Green for iPod buttons
-        dot.style.border = '1px solid black';
-        dot.style.position = 'absolute';
-        dot.style.left = xPercent + '%'; 
-        dot.style.top = yPercent + '%';
-        dot.style.transform = 'translate(-50%, -50%)';
-        dot.style.borderRadius = '50%';
-        dot.style.pointerEvents = 'none';
-        dot.style.zIndex = '100';
-        ipodContainer.appendChild(dot);
-        tempDots.push(dot);
-    }
-
-    // Enable tracing on the iPod container once the modal is open
-    function enableIpodTracer() {
-        tracerActive = true;
-        
-        ipodContainer.addEventListener('click', (e) => {
-            if (!tracerActive) return;
-            
-            // Prevent the click from triggering existing button logic
-            e.stopPropagation();
-            
-            const rect = ipodContainer.getBoundingClientRect();
-            const rawX = e.clientX - rect.left;
-            const rawY = e.clientY - rect.top;
-            const xPercent = (rawX / rect.width) * 100;
-            const yPercent = (rawY / rect.height) * 100;
-
-            currentPoints.push(`${xPercent.toFixed(2)}% ${yPercent.toFixed(2)}%`);
-            createDot(xPercent, yPercent);
-        }, true); // Use capture phase to get it before button handlers
-    }
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && currentPoints.length > 2 && tracerActive) {
-            const name = prompt("Name this button zone (e.g., menuBtn, playBtn, prevBtn, nextBtn, centerBtn):");
-            if (name) {
-                const polygonString = `polygon(${currentPoints.join(', ')})`;
-                const codeSnippet = `\n/* ${name} */\nclip-path: ${polygonString};\n`;
-                outputArea.value += codeSnippet;
-                currentPoints = [];
-                tempDots.forEach(dot => dot.remove());
-                tempDots = [];
-                alert(`Saved ${name}! Trace next button or copy output.`);
-            }
-        }
-    });
-
-    // Auto-enable tracer when modal opens
-    const originalOpenModal = openModal;
-    
-    // ========================================
-    // END TRACER TOOL
-    // ========================================
     
     // Store character data in an array for easy navigation
     const characters = [
@@ -183,9 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
             progressBar.style.width = '0%';
             currentTimeDisplay.textContent = "0:00";
         });
-        
-        // Enable iPod tracer after modal opens
-        setTimeout(enableIpodTracer, 100);
     }
 
     function closeModal() {
@@ -194,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
             currentAudio.pause();
             currentAudio = null;
         }
-        tracerActive = false;
     }
 
     closeModalBtn.addEventListener('click', closeModal);
@@ -202,10 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modal) closeModal();
     });
 
-    // --- CONTROLS LOGIC (Disabled during tracing) ---
+    // --- CONTROLS LOGIC ---
 
     function togglePlay() {
-        if (!currentAudio || tracerActive) return;
+        if (!currentAudio) return;
         if (currentAudio.paused) {
             currentAudio.play();
         } else {
@@ -214,19 +131,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function playNext() {
-        if (tracerActive) return;
         currentCharacterIndex = (currentCharacterIndex + 1) % characters.length;
         openModal(characters[currentCharacterIndex]);
     }
 
     function playPrev() {
-        if (tracerActive) return;
         currentCharacterIndex = (currentCharacterIndex - 1 + characters.length) % characters.length;
         openModal(characters[currentCharacterIndex]);
     }
 
     function openMenu() {
-        if (tracerActive) return;
         if (currentAudio) currentAudio.pause();
         eggModal.classList.remove('hidden');
     }
@@ -236,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // Button Listeners (these are temporarily overridden by tracer click)
+    // Button Listeners
     centerBtn.addEventListener('click', togglePlay);
     wheelPlayBtn.addEventListener('click', togglePlay);
     nextBtn.addEventListener('click', playNext);
@@ -268,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     progressContainer.addEventListener('click', (e) => {
-        if (!currentAudio || !currentAudio.duration || tracerActive) return;
+        if (!currentAudio || !currentAudio.duration) return;
         
         const rect = progressContainer.getBoundingClientRect();
         const clickX = e.clientX - rect.left; 
