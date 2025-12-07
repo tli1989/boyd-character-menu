@@ -254,10 +254,26 @@ The first job you're assigned, you mess up. But before you get thrown out of the
         setTimeout(() => {
             const form = document.getElementById('coming-soon-form');
             if (form) {
-                form.addEventListener('submit', (e) => {
+                form.addEventListener('submit', async (e) => {
                     e.preventDefault();
                     const email = form.querySelector('input').value;
-                    console.log(`Coming soon signup: ${email} for ${charName}`);
+                    
+                    // Submit to Formspree (replace YOUR_FORM_ID with actual ID)
+                    try {
+                        await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                email: email,
+                                character: charName,
+                                type: 'coming_soon',
+                                timestamp: new Date().toISOString()
+                            })
+                        });
+                    } catch (err) {
+                        console.log('Form submission error:', err);
+                    }
+                    
                     alert('Thanks! We\'ll let you know when it\'s ready.');
                     eggModal.classList.add('hidden');
                 });
@@ -324,11 +340,28 @@ The first job you're assigned, you mess up. But before you get thrown out of the
         return `${m}:${s < 10 ? '0' : ''}${s}`;
     }
 
-    emailForm.addEventListener('submit', (e) => {
+    emailForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = emailForm.querySelector('input').value;
+        const currentChar = characters[currentCharacterIndex];
+        
         if (email) {
-            console.log(`User subscribed: ${email}`);
+            // Submit to Formspree (replace YOUR_FORM_ID with actual ID from formspree.io)
+            try {
+                await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: email,
+                        character: currentChar.name,
+                        type: 'audio_unlock',
+                        timestamp: new Date().toISOString()
+                    })
+                });
+            } catch (err) {
+                console.log('Form submission error:', err);
+            }
+            
             isUnlocked = true;
             emailGate.classList.add('hidden');
             currentAudio.play();
